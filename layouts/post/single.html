@@ -9,6 +9,11 @@
   </small>
   {{ partial "tags" . }}
   {{ partial "categories" . }}
+  {{ with .File }}
+  <!-- {{ .ContentBaseName }} -->
+  <small>path: <code>{{ .Path }}</code></small>
+  {{ end }}
+
 </p>
 {{ .Content }}
 
