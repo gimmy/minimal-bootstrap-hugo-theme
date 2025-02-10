@@ -5,13 +5,16 @@
   <small class="text-secondary">
   {{ $customDateFormat := "January 2, 2006" }}
   {{ with .Site.Params.customDateFormat }}{{ $customDateFormat = . }}{{ end }}
-  {{ .PublishDate.Format $customDateFormat }}{{ if gt .Lastmod .PublishDate }}, updated {{ .Lastmod.Format $customDateFormat }}{{ end }}
+  On {{ .PublishDate.Format $customDateFormat }}
+  | <code>{{ .Path }}</code>
+  </small>
+  {{ partial "categories" . }} <br/>
+  <small class="text-secondary">
+    {{ if gt .Lastmod .PublishDate }} rev {{ .Lastmod.Format $customDateFormat }}{{ end }}
   </small>
   {{ partial "tags" . }}
-  {{ partial "categories" . }}
   {{ with .File }}
   <!-- {{ .ContentBaseName }} -->
-  <small>path: <code>{{ .Path }}</code></small>
   {{ end }}
 
 </p>
