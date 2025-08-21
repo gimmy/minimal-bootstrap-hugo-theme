@@ -1,6 +1,9 @@
 {{- define "main" -}}
 
-<h1>{{ .Title | markdownify }}</h1>
+<h1>{{ .Title | markdownify }}
+{{ if .Draft }}
+  <span style="color:gray; font-weight:bold;">— [DRAFT]</span>
+  {{ end }}</h1>  
 <p>
   <small class="text-secondary">
   {{ $customDateFormat := "January 2, 2006" }}
@@ -16,7 +19,6 @@
   {{ with .File }}
   <!-- {{ .ContentBaseName }} -->
   {{ end }}
-
 </p>
 {{ .Content }}
 
