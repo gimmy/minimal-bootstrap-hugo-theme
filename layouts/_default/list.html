@@ -11,6 +11,7 @@
     <br>
     <small class="text-secondary">{{ .PublishDate.Format $customDateFormat }}</small>
     {{ partial "tags" . }}
+    {{ if .Draft }} — <span class="draft-label">DRAFT</span>{{ end }}
     {{ if eq .Site.Params.showPostSummary true }}
     <br>
     {{ .Summary }}
